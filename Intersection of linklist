@@ -1,0 +1,120 @@
+import org.w3c.dom.traversal.NodeFilter;
+
+public class IntersectionOfList {
+	public void print(ListNode head)
+	{
+		ListNode temp = head;
+		while(temp != null)
+		{
+			System.out.println(temp.data+"->");
+			temp =temp.next;
+		}
+	}
+	public void findIntersection(ListNode head1, ListNode head2)
+	{
+		if(head1 == null || head2 == null)
+		{
+			
+		}
+		ListNode temp1 = head1;
+		ListNode temp2 = head2;
+		
+		int count1=0, count2=0 ;
+		
+		while(temp1.next != null)
+		{
+			count1++;
+			temp1 = temp1.next;
+		}
+		while(temp2.next != null)
+		{
+			count2++;
+			temp2 = temp2.next;
+		}
+		if(temp1 == temp2)
+			System.out.println("intersection is availabel"); // if both are different then intersection is not available	
+		
+		int nodedifference = count1-count2;
+		System.out.println("difference between Nodes are :" + nodedifference );
+		temp1 = head1;
+		temp2 = head2;
+		
+		if(nodedifference > 0)
+		{
+			for(int i=0; i<nodedifference; i++)
+			{
+				temp1 = temp1.next;
+			}
+		}
+		else if(nodedifference < 0)
+		{
+			for(int i=0; i<nodedifference; i++)
+			{
+				temp2 = temp2.next;
+			}
+		}
+
+			while(temp1 != temp2)
+			{
+				temp1 = temp1.next;
+				temp2 = temp2.next;
+				
+			}
+			System.out.println("followiing node is intersection");
+			System.out.println(temp1.data );
+	
+		
+		
+		
+		
+	}
+}
+
+public class main {
+	public static void main(String[] args)
+	{
+		ListNode head1 = new ListNode(1);
+		ListNode node1 = new ListNode(2);
+		ListNode node2 = new ListNode(3);
+		ListNode node3 = new ListNode(4);
+		
+		
+		ListNode head2 = new ListNode(6);
+		ListNode node6 = new ListNode(6);
+		ListNode node7 = new ListNode(7);
+		ListNode node8 = new ListNode(8);
+		ListNode node9 = new ListNode(9);
+		ListNode node10 = new ListNode(10);
+		
+		head1.next = node1;
+		node1.next = node2;
+		node2.next = node3;
+		
+		node3.next = node8;
+		
+		head2.next = node6;
+		node6.next = node7;
+		node7.next = node8;
+		node8.next = node9;
+		node9.next = node10;
+		
+		IntersectionOfList list1 = new IntersectionOfList();
+		//list1.print(head1);
+		//list1.print(head2);
+		list1.findIntersection(head1, head2);
+		// TODO Auto-generated method stub
+		
+	}
+}
+
+public class ListNode {
+	int data;
+	ListNode next;
+	
+	ListNode(int data)
+	{
+		this.data = data;
+		next = null;
+	}
+}
+
