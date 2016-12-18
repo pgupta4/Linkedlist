@@ -1,5 +1,6 @@
 import org.w3c.dom.traversal.NodeFilter;
 
+// time complexity : o(m+n) and Space complexity o(1)
 public class IntersectionOfList {
 	public void print(ListNode head)
 	{
