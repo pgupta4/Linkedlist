@@ -1,4 +1,4 @@
-
+//Time complexity o(n) and space complexity o(1)
 
 public class ReorderList {
 	public void Reorder(ListNode head)
