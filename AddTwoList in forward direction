@@ -1,0 +1,67 @@
+public class Solutions {
+	public ListNode addList(ListNode head1, ListNode head2, int carry)
+	{
+		if(head1 == null && head2== null)
+			return null;
+		
+		int value1 = (head1 != null)? head1.value : 0;
+		int value2 = (head2 != null)? head2.value : 0;
+		
+		ListNode next1 = (head1.next != null)? head1.next : null;
+		ListNode next2 = (head2.next != null)? head2.next : null;
+		
+		int sum = value1 + value2+carry;
+		carry = sum/10;
+		sum = sum%10;
+		
+		ListNode currenthead = new ListNode(sum);
+		currenthead.next = addList(next1,next2,carry);
+		
+		return currenthead;
+	}
+	public void printList(ListNode head)
+	{
+		ListNode temp = head;
+		while(temp!=null)
+		{
+			System.out.println(temp.value);
+			temp = temp.next;
+		}
+	}
+}
+
+
+public class ListNode {
+	int value;
+	ListNode next;
+	ListNode(int data)
+	{
+		value = data;
+		next =null;
+	}
+}
+
+public class main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ListNode head1 = new ListNode(2);
+		ListNode node1 = new ListNode(4);
+		ListNode node2 = new ListNode(3);
+		
+		head1.next = node1;
+		node1.next = node2;
+		node2.next = null;
+		
+		ListNode head2 = new ListNode(5);
+		ListNode node21 = new ListNode(6);
+		ListNode node22 = new ListNode(4);
+		
+		head2.next = node21;
+		node21.next = node22;
+		node22.next = null;
+		
+		Solutions s = new Solutions();
+		s.printList(s.addList(head1, head2, 0));
+	}
+}
